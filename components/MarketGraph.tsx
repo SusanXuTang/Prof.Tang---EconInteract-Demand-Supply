@@ -65,7 +65,7 @@ const MarketGraph: React.FC<MarketGraphProps> = ({ demandShift, supplyShift, equ
             stroke="#94a3b8"
           />
           <Tooltip 
-            formatter={(value: number) => [`$${value.toFixed(2)}`, 'Price']}
+            formatter={(value) => [typeof value === 'number' ? `$${value.toFixed(2)}` : String(value ?? 'N/A'), 'Price']}
             labelFormatter={(label) => `Quantity: ${label}`}
             contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
           />

@@ -3,18 +3,25 @@ import MarketGraph from './components/MarketGraph';
 import ScenarioSelector from './components/ScenarioSelector';
 import AnalysisPanel from './components/AnalysisPanel';
 import PracticePanel from './components/PracticePanel';
-import { BASE_DEMAND_INTERCEPT, BASE_DEMAND_SLOPE, BASE_SUPPLY_INTERCEPT, BASE_SUPPLY_SLOPE } from './constants';
+import {
+  BASE_DEMAND_INTERCEPT,
+  BASE_DEMAND_SLOPE,
+  BASE_SUPPLY_INTERCEPT,
+  BASE_SUPPLY_SLOPE,
+  SCENARIOS
+} from './constants';
 import { EquilibriumPoint, Scenario } from './types';
 import { BookOpen, Compass, GraduationCap } from 'lucide-react';
 
 type AppMode = 'explore' | 'practice';
+const BASELINE_SCENARIO = SCENARIOS.find((scenario) => scenario.id === 'baseline') ?? null;
 
 const App: React.FC = () => {
   const [mode, setMode] = useState<AppMode>('explore');
   const [demandShift, setDemandShift] = useState<number>(0);
   const [supplyShift, setSupplyShift] = useState<number>(0);
   const [activeScenarioId, setActiveScenarioId] = useState<string | null>('baseline');
-  const [activeScenarioData, setActiveScenarioData] = useState<Scenario | null>(null);
+  const [activeScenarioData, setActiveScenarioData] = useState<Scenario | null>(BASELINE_SCENARIO);
 
   // Calculate Equilibrium
   const equilibrium = useMemo<EquilibriumPoint>(() => {
@@ -55,7 +62,7 @@ const App: React.FC = () => {
     setDemandShift(0);
     setSupplyShift(0);
     setActiveScenarioId('baseline');
-    setActiveScenarioData(null);
+    setActiveScenarioData(BASELINE_SCENARIO);
   };
 
   return (
