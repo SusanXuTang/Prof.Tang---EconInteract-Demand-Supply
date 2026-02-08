@@ -1,0 +1,5 @@
+{
+  "name": "EconInteract: Supply & Demand Explorer",
+  "description": "An interactive microeconomics simulator for visualizing market equilibrium shifts, covering income effects, related goods, technology, and expectations.",
+  "requestFramePermissions": []
+}
